@@ -1,0 +1,32 @@
+name: Angular CI Guard
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v3
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x' # Versión recomendada para Angular 16
+        cache: 'npm'
+
+    - name: Instalar Dependencias
+      run: npm ci
+
+    - name: Comprobar Linter (El Qodana de TS)
+      run: npm run lint
+
+    - name: Ejecutar Tests y Cobertura (El Jacoco de TS)
+      # Usamos Chrome Headless para que el test pueda correr en un servidor sin pantalla gráfica
+      run: npm run test -- --no-watch --code-coverage --browsers=ChromeHeadless
+
+    - name: Comprobar que compila para Producción
+      run: npm run build
