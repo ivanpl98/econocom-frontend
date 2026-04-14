@@ -1,0 +1,67 @@
+:host {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin-bottom:3rem;
+}
+
+.login-footer {
+
+    &__selector {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        gap: 8px; /* Separación perfecta entre la bola del mundo, el texto y la flecha */
+        
+        /* Quitamos márgenes/paddings raros para que alinee a la misma altura que el logo */
+        padding: 0; 
+        font-size: var(--font-m); /* O el tamaño que prefieras */
+        border:none;
+        background: var(--white);
+        color: var(--black);
+    }
+
+    &__icon {
+        font-size: 1.3rem;
+        color: var(--black);
+        justify-self: center;
+        align-self: center;
+    }
+
+    &__text {
+        font-size: 0.8rem;
+        color: var(--black);
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    &__item{
+        font-size: 0.9rem;
+        color: var(--black);
+    }
+
+    &__banner {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+    }
+
+    &__logo {
+        max-width: 80%;
+        max-height: 80%;
+        object-fit: contain;
+    }
+
+}

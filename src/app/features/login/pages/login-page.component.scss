@@ -1,0 +1,28 @@
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    &__banner {
+        flex: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--neutral-99);
+        width: 100%;
+        height: 100%;
+    }
+
+    &__form {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+}
