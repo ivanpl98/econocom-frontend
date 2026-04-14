@@ -1,0 +1,14 @@
+<div class="login-footer__selector">
+    <button mat-button [matMenuTriggerFor]="menuIdioma" class="login-footer__button">
+        <mat-icon class="login-footer__icon">language</mat-icon>
+        <span class="login-footer__text">IDIOMA: ES</span>
+        <mat-icon>keyboard_arrow_down</mat-icon> 
+    </button>
+    <mat-menu #menuIdioma="matMenu" class="login-footer__menu">
+        <button mat-menu-item class="login-footer__item">ES</button>
+        <button mat-menu-item class="login-footer__item">EN</button>
+    </mat-menu>
+</div>
+<div class="login-footer__banner">
+    <img class="login-footer__logo" src="assets/images/logos/Econocom.svg" alt="Econocom Logo">
+</div>

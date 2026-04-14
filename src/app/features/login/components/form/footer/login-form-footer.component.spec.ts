@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { LoginFormFooterComponent } from './login-form-footer.component';
+
+describe('LoginFormFooterComponent', () => {
+  let component: LoginFormFooterComponent;
+  let fixture: ComponentFixture<LoginFormFooterComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [LoginFormFooterComponent]
+    });
+    fixture = TestBed.createComponent(LoginFormFooterComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

@@ -1,0 +1,43 @@
+<div class=" login-form__principal">
+    <div class="login-form__image">
+        <img src="assets/images/logos/Logo-RD.svg" alt="Logo RD" />
+    </div>
+    <div class="login-form__content">
+        <p class="login-form__text">Inicia sesión en tu cuenta</p>
+        <form class="login-form__form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline" class="login-form__field">
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput type="email" formControlName="email" required />
+                <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                    El correo electrónico es obligatorio.
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+                    Por favor, ingresa un correo electrónico válido.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="login-form__field">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="password" required />
+                <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                    La contraseña es obligatoria.
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+                    La contraseña debe tener al menos 6 caracteres.
+                </mat-error>
+            </mat-form-field>
+            <button mat-flat-button class="login-form__submit" color="primary" type="submit">
+                {{'Entrar' | uppercase}}
+            </button>
+        </form>
+    </div>
+    <div class="login-form__sso">
+        <p class="login-form__ssoText">Otras formas de acceso:</p>
+        <button mat-flat-button class="login-form__ssoButton" color="accent" (click)="onSsoLogin()">
+            {{'Entrar con Decathlon' | uppercase}}
+        </button>
+    </div>
+    <div class="login-form__signup">
+        <p class="login-form__signupText">¿No tienes cuenta? <a class="login-form__routerLink"routerLink="/register">Regístrate</a></p>
+    </div>
+</div>
+<app-login-form-footer class="login-form__footer"></app-login-form-footer>
