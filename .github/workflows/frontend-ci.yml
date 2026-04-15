@@ -21,10 +21,10 @@ jobs:
     - name: Instalar Dependencias
       run: npm ci
 
-    - name: Comprobar Linter (El Qodana de TS)
+    - name: Comprobar Linter
       run: npm run lint
 
-    - name: Ejecutar Tests y Cobertura (El Jacoco de TS)
+    - name: Ejecutar Tests y Cobertura
       # Usamos Chrome Headless para que el test pueda correr en un servidor sin pantalla gráfica
       run: npm run test -- --no-watch --code-coverage --browsers=ChromeHeadless
 
