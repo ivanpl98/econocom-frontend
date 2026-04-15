@@ -1,28 +1,39 @@
-import { inject, Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { LoginCredentials } from '../models/login-credentials';
-import { Observable } from 'rxjs';
-import { LoginResponse } from '../models/login-response';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private http: HttpClient = inject(HttpClient);
+  private authToken: string | null = null;
+  private refreshToken: string | null = null;
 
-
-  login(credentials: LoginCredentials): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(environment.authApiUrl, credentials);
+  setAuthToken(tokenType: string, token: string, refreshToken: string) {
+    this.authToken = `${tokenType} ${token}`;
+    this.refreshToken = `${tokenType} ${refreshToken}`;
+    localStorage.setItem('authToken', this.authToken);
+    localStorage.setItem('refreshToken', this.refreshToken);
   }
 
-  signUp(credentials: LoginCredentials): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${environment.authApiUrl}/register`, credentials);
+  getAuthToken(): string | null {
+    if (!this.authToken) this.authToken = localStorage.getItem('authToken');
+    return this.authToken;
   }
 
-  refreshToken(): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${environment.authApiUrl}/refresh`, {});
+  getRefreshToken(): string | null {
+    if (!this.refreshToken) this.refreshToken = localStorage.getItem('refreshToken');
+    return this.refreshToken;
+  }
+
+  clearAuthToken() {
+    this.authToken = null;
+    this.refreshToken = null;
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('refreshToken');
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.getAuthToken();
   }
 
 }

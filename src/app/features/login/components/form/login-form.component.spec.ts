@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginFormComponent } from './login-form.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;
@@ -8,7 +9,7 @@ describe('LoginFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [LoginFormComponent]
+      imports: [LoginFormComponent, NoopAnimationsModule],
     });
     fixture = TestBed.createComponent(LoginFormComponent);
     component = fixture.componentInstance;

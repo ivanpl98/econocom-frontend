@@ -1,4 +1,7 @@
 <div class="login-page">
     <app-login-banner class="login-page__banner"></app-login-banner>
-    <app-login-form class="login-page__form"></app-login-form>
+    <app-login-form class="login-page__form"
+    (formSubmit)="onLoginFormSubmit($event)"
+    (ssoLoginClick)="onSsoLoginClick()"
+    (registerClick)="onRegisterClick($event)"></app-login-form>
 </div>
