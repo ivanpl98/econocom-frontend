@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { of, throwError, BehaviorSubject } from 'rxjs';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -33,7 +33,7 @@ describe('LoginPageComponent', () => {
   let routerSpy: jasmine.SpyObj<Router>;
 
   // Usamos BehaviorSubject para poder simular cambios en la URL (los queryParams)
-  let queryParamsSubject: BehaviorSubject<any>;
+  let queryParamsSubject: BehaviorSubject<Params>;
 
   beforeEach(async () => {
     loginServiceSpy = jasmine.createSpyObj('LoginService', ['login', 'signUp', 'ssoLogin', 'ssoCallback']);
@@ -41,7 +41,7 @@ describe('LoginPageComponent', () => {
     snackBarSpy = jasmine.createSpyObj('MatSnackBar', ['open']);
     routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
-    queryParamsSubject = new BehaviorSubject<any>({});
+    queryParamsSubject = new BehaviorSubject<Params>({});
 
     await TestBed.configureTestingModule({
       imports: [LoginPageComponent, MockLoginBannerComponent, MockLoginFormComponent, NoopAnimationsModule],
@@ -68,14 +68,14 @@ describe('LoginPageComponent', () => {
   describe('ngOnInit (SSO Callback Flow)', () => {
     it('should NOT call processSsoCallback if there is NO code in queryParams', () => {
       // Espiamos el método privado saltándonos el tipado de TypeScript
-      const spy = spyOn<any>(component, 'processSsoCallback');
+      const spy = spyOn<Params>(component, 'processSsoCallback');
       queryParamsSubject.next({}); // URL sin código
       fixture.detectChanges();
       expect(spy).not.toHaveBeenCalled();
     });
 
     it('should call processSsoCallback if code is present in URL', () => {
-      const spy = spyOn<any>(component, 'processSsoCallback');
+      const spy = spyOn<Params>(component, 'processSsoCallback');
       queryParamsSubject.next({ code: 'fake-auth0-code' }); // Simulamos vuelta de Auth0
       fixture.detectChanges();
       expect(spy).toHaveBeenCalledWith('fake-auth0-code');
