@@ -9,7 +9,7 @@ describe('LoginFormFooterComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [LoginFormFooterComponent]
-    });
+    }).compileComponents();
     fixture = TestBed.createComponent(LoginFormFooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

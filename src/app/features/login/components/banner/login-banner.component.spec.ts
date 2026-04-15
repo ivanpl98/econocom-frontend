@@ -1,15 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LoginBannerComponent } from './login-banner.component';
 
 describe('LoginBannerComponent', () => {
   let component: LoginBannerComponent;
   let fixture: ComponentFixture<LoginBannerComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [LoginBannerComponent]
-    });
+    }).compileComponents();
     fixture = TestBed.createComponent(LoginBannerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
