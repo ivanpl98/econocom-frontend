@@ -1,0 +1,21 @@
+.register-modal {
+    &__content {
+        display: flex;
+        flex-direction: column;
+        padding-top: var(--spacing-s);
+    }
+
+    &__field {
+        width: 100%;
+        gap: var(--spacing-m);
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3rem;
+    }
+
+    &__actions {
+        padding: var(--spacing-m);
+        display: flex;
+        gap: var(--spacing-m);
+    }
+}
